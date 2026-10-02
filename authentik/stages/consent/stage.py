@@ -106,6 +106,10 @@ class ConsentStageView(ChallengeStageView):
         if PLAN_CONTEXT_PENDING_USER in self.executor.plan.context:
             user = self.executor.plan.context[PLAN_CONTEXT_PENDING_USER]
 
+        # Expired rows are hidden by the manager but still hold the unique constraint
+        UserConsent.objects.including_expired().filter(
+            user=user, application=application, expiring=True, expires__lt=now()
+        ).delete()
         consent: UserConsent | None = UserConsent.objects.filter(
             user=user, application=application
         ).first()

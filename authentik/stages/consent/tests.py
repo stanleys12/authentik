@@ -3,6 +3,7 @@
 from datetime import timedelta
 
 from django.urls import reverse
+from django.utils.timezone import now
 from freezegun import freeze_time
 
 from authentik.core.models import Application
@@ -341,3 +342,10 @@ class TestConsentStage(FlowTestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertStageResponse(response, component="xak-flow-redirect")
+
+    def test_expire_not_cleaned(self):
+        """Test re-consenting while an expired consent hasn't been cleaned up yet"""
+        UserConsent.objects.create(
+            user=self.user, application=self.application, expires=now() - timedelta(seconds=1)
+        )
+        self.test_expire()
