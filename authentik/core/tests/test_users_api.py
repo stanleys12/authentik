@@ -306,10 +306,16 @@ class TestUsersAPI(APITestCase):
         brand.flow_recovery = flow
         brand.save()
         self.client.force_login(self.admin)
-        response = self.client.post(
-            reverse("authentik_api:user-recovery", kwargs={"pk": self.user.pk})
-        )
+        url = reverse("authentik_api:user-recovery", kwargs={"pk": self.user.pk})
+        response = self.client.post(url)
         self.assertEqual(response.status_code, 200)
+        token = Token.objects.including_expired().get(identifier=f"{self.user.uid}-password-reset")
+        token.expires = now() - timedelta(days=1)
+        token.save()
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 200)
+        token.refresh_from_db()
+        self.assertGreater(token.expires, now())
 
     def test_recovery_duration(self):
         """Test user recovery token duration"""
