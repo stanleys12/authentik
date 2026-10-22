@@ -742,7 +742,7 @@ class UserViewSet(
         if token_duration:
             timedelta_string_validator(token_duration)
             expires = now() + timedelta_from_string(token_duration)
-        token, __ = FlowToken.objects.update_or_create(
+        token, __ = FlowToken.objects.including_expired().update_or_create(
             identifier=f"{user.uid}-password-reset",
             defaults={
                 "user": user,

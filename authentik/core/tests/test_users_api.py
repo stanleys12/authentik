@@ -311,6 +311,16 @@ class TestUsersAPI(APITestCase):
         )
         self.assertEqual(response.status_code, 200)
 
+        identifier = f"{self.user.uid}-password-reset"
+        Token.objects.including_expired().filter(identifier=identifier).update(
+            expires=now() - timedelta(hours=1)
+        )
+        response = self.client.post(
+            reverse("authentik_api:user-recovery", kwargs={"pk": self.user.pk})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertGreater(Token.objects.get(identifier=identifier).expires, now())
+
     def test_recovery_duration(self):
         """Test user recovery token duration"""
         Token.objects.all().delete()
