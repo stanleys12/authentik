@@ -14406,6 +14406,11 @@
         "model_authentik_sources_kerberos.groupkerberossourceconnection": {
             "type": "object",
             "properties": {
+                "group": {
+                    "type": "string",
+                    "format": "uuid",
+                    "title": "Group"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -14699,6 +14704,10 @@
         "model_authentik_sources_kerberos.userkerberossourceconnection": {
             "type": "object",
             "properties": {
+                "user": {
+                    "type": "integer",
+                    "title": "User"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -14741,6 +14750,11 @@
         "model_authentik_sources_ldap.groupldapsourceconnection": {
             "type": "object",
             "properties": {
+                "group": {
+                    "type": "string",
+                    "format": "uuid",
+                    "title": "Group"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -15079,6 +15093,10 @@
         "model_authentik_sources_ldap.userldapsourceconnection": {
             "type": "object",
             "properties": {
+                "user": {
+                    "type": "integer",
+                    "title": "User"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -15121,6 +15139,11 @@
         "model_authentik_sources_oauth.groupoauthsourceconnection": {
             "type": "object",
             "properties": {
+                "group": {
+                    "type": "string",
+                    "format": "uuid",
+                    "title": "Group"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -15432,6 +15455,10 @@
         "model_authentik_sources_oauth.useroauthsourceconnection": {
             "type": "object",
             "properties": {
+                "user": {
+                    "type": "integer",
+                    "title": "User"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -15486,6 +15513,11 @@
         "model_authentik_sources_plex.groupplexsourceconnection": {
             "type": "object",
             "properties": {
+                "group": {
+                    "type": "string",
+                    "format": "uuid",
+                    "title": "Group"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -15726,6 +15758,10 @@
         "model_authentik_sources_plex.userplexsourceconnection": {
             "type": "object",
             "properties": {
+                "user": {
+                    "type": "integer",
+                    "title": "User"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -15773,6 +15809,11 @@
         "model_authentik_sources_saml.groupsamlsourceconnection": {
             "type": "object",
             "properties": {
+                "group": {
+                    "type": "string",
+                    "format": "uuid",
+                    "title": "Group"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -16100,6 +16141,10 @@
         "model_authentik_sources_saml.usersamlsourceconnection": {
             "type": "object",
             "properties": {
+                "user": {
+                    "type": "integer",
+                    "title": "User"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -16262,6 +16307,11 @@
         "model_authentik_sources_telegram.grouptelegramsourceconnection": {
             "type": "object",
             "properties": {
+                "group": {
+                    "type": "string",
+                    "format": "uuid",
+                    "title": "Group"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",
@@ -16488,6 +16538,10 @@
         "model_authentik_sources_telegram.usertelegramsourceconnection": {
             "type": "object",
             "properties": {
+                "user": {
+                    "type": "integer",
+                    "title": "User"
+                },
                 "source": {
                     "type": "string",
                     "format": "uuid",

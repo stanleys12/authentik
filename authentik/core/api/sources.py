@@ -133,10 +133,16 @@ class UserSourceConnectionSerializer(SourceSerializer):
             "last_updated",
         ]
         extra_kwargs = {
-            "user": {"read_only": True},
             "created": {"read_only": True},
             "last_updated": {"read_only": True},
         }
+
+    def get_extra_kwargs(self):
+        kwargs = super().get_extra_kwargs()
+        # Connections can't be moved to a different user once created
+        if self.instance:
+            kwargs["user"] = {"read_only": True}
+        return kwargs
 
 
 class UserSourceConnectionViewSet(
@@ -174,10 +180,16 @@ class GroupSourceConnectionSerializer(SourceSerializer):
             "last_updated",
         ]
         extra_kwargs = {
-            "group": {"read_only": True},
             "created": {"read_only": True},
             "last_updated": {"read_only": True},
         }
+
+    def get_extra_kwargs(self):
+        kwargs = super().get_extra_kwargs()
+        # Connections can't be moved to a different group once created
+        if self.instance:
+            kwargs["group"] = {"read_only": True}
+        return kwargs
 
 
 class GroupSourceConnectionViewSet(

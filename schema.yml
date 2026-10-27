@@ -42278,7 +42278,6 @@ components:
         group:
           type: string
           format: uuid
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -42308,6 +42307,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -42315,6 +42317,7 @@ components:
           type: string
           minLength: 1
       required:
+      - group
       - identifier
       - source
     GroupLDAPSourceConnection:
@@ -42328,7 +42331,6 @@ components:
         group:
           type: string
           format: uuid
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -42363,6 +42365,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -42370,6 +42375,7 @@ components:
           type: string
           minLength: 1
       required:
+      - group
       - identifier
       - source
     GroupMatchingModeEnum:
@@ -42389,7 +42395,6 @@ components:
         group:
           type: string
           format: uuid
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -42419,6 +42424,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -42426,6 +42434,7 @@ components:
           type: string
           minLength: 1
       required:
+      - group
       - identifier
       - source
     GroupPlexSourceConnection:
@@ -42439,7 +42448,6 @@ components:
         group:
           type: string
           format: uuid
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -42469,6 +42477,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -42476,6 +42487,7 @@ components:
           type: string
           minLength: 1
       required:
+      - group
       - identifier
       - source
     GroupRequest:
@@ -42518,7 +42530,6 @@ components:
         group:
           type: string
           format: uuid
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -42548,6 +42559,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -42555,6 +42569,7 @@ components:
           type: string
           minLength: 1
       required:
+      - group
       - identifier
       - source
     GroupSourceConnection:
@@ -42568,7 +42583,6 @@ components:
         group:
           type: string
           format: uuid
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -42598,6 +42612,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -42605,6 +42622,7 @@ components:
           type: string
           minLength: 1
       required:
+      - group
       - identifier
       - source
     GroupTelegramSourceConnection:
@@ -42618,7 +42636,6 @@ components:
         group:
           type: string
           format: uuid
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -42648,6 +42665,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -42655,6 +42675,7 @@ components:
           type: string
           minLength: 1
       required:
+      - group
       - identifier
       - source
     Hardware:
@@ -51114,6 +51135,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -51124,6 +51148,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -51134,6 +51161,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -51144,6 +51174,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -51181,6 +51214,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -51191,6 +51227,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -51201,6 +51240,9 @@ components:
       type: object
       description: Group Source Connection
       properties:
+        group:
+          type: string
+          format: uuid
         source:
           type: string
           format: uuid
@@ -53761,6 +53803,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -53771,6 +53815,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -53824,6 +53870,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -53841,6 +53889,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -53898,6 +53948,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -53908,6 +53960,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -53918,6 +53972,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -60574,7 +60630,6 @@ components:
           title: ID
         user:
           type: integer
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -60604,6 +60659,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -60613,6 +60670,7 @@ components:
       required:
       - identifier
       - source
+      - user
     UserLDAPSourceConnection:
       type: object
       description: User source connection
@@ -60623,7 +60681,6 @@ components:
           title: ID
         user:
           type: integer
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -60658,6 +60715,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -60667,6 +60726,7 @@ components:
       required:
       - identifier
       - source
+      - user
     UserLoginChallenge:
       type: object
       description: Empty challenge
@@ -60872,7 +60932,6 @@ components:
           title: ID
         user:
           type: integer
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -60905,6 +60964,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -60921,6 +60982,7 @@ components:
       required:
       - identifier
       - source
+      - user
     UserOffboarding:
       type: object
       description: |-
@@ -61037,7 +61099,6 @@ components:
           title: ID
         user:
           type: integer
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -61067,6 +61128,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -61081,6 +61144,7 @@ components:
       - identifier
       - plex_token
       - source
+      - user
     UserRecoveryEmailRequest:
       type: object
       description: Payload to create and email a recovery link
@@ -61156,7 +61220,6 @@ components:
           title: ID
         user:
           type: integer
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -61186,6 +61249,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -61195,6 +61260,7 @@ components:
       required:
       - identifier
       - source
+      - user
     UserSelf:
       type: object
       description: User Serializer for information a user can retrieve about themselves
@@ -61362,7 +61428,6 @@ components:
           title: ID
         user:
           type: integer
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -61392,6 +61457,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -61401,6 +61468,7 @@ components:
       required:
       - identifier
       - source
+      - user
     UserSwitchActionEnum:
       enum:
       - add
@@ -61435,7 +61503,6 @@ components:
           title: ID
         user:
           type: integer
-          readOnly: true
         source:
           type: string
           format: uuid
@@ -61465,6 +61532,8 @@ components:
       type: object
       description: User source connection
       properties:
+        user:
+          type: integer
         source:
           type: string
           format: uuid
@@ -61474,6 +61543,7 @@ components:
       required:
       - identifier
       - source
+      - user
     UserTypeEnum:
       enum:
       - internal

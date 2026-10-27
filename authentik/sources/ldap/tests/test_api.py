@@ -9,13 +9,16 @@ from rest_framework.exceptions import ErrorDetail
 from rest_framework.test import APITestCase
 
 from authentik.blueprints.tests import apply_blueprint
+from authentik.core.models import Group
 from authentik.core.tests.utils import create_test_admin_user, create_test_cert, create_test_user
 from authentik.lib.generators import generate_id
 from authentik.sources.ldap.api.sources import LDAPSourceSerializer
 from authentik.sources.ldap.models import (
+    GroupLDAPSourceConnection,
     LDAPSource,
     LDAPSourceBindMethod,
     LDAPSourcePropertyMapping,
+    UserLDAPSourceConnection,
 )
 from authentik.sources.ldap.tests.mock_ad import mock_ad_connection
 
@@ -308,3 +311,52 @@ class LDAPAPITests(APITestCase):
                 reverse("authentik_api:ldapsource-debug", kwargs={"slug": source.slug})
             )
         self.assertEqual(res.status_code, 403)
+
+    def test_user_connection_create(self):
+        """Create user connection"""
+        self.client.force_login(create_test_admin_user())
+        source = self._create_debug_source()
+        user = create_test_user()
+        url = reverse("authentik_api:userldapsourceconnection-list")
+        res = self.client.post(url, {"source": source.pk, "identifier": generate_id()})
+        self.assertEqual(res.status_code, 400)
+        self.assertIn("user", loads(res.content.decode()))
+        res = self.client.post(
+            url, {"user": user.pk, "source": source.pk, "identifier": generate_id()}
+        )
+        self.assertEqual(res.status_code, 201)
+        connection = UserLDAPSourceConnection.objects.get(pk=loads(res.content.decode())["pk"])
+        self.assertEqual(connection.user, user)
+
+    def test_user_connection_update(self):
+        """Update user connection, user can't be changed"""
+        self.client.force_login(create_test_admin_user())
+        user = create_test_user()
+        connection = UserLDAPSourceConnection.objects.create(
+            user=user, source=self._create_debug_source(), identifier=generate_id()
+        )
+        identifier = generate_id()
+        res = self.client.patch(
+            reverse("authentik_api:userldapsourceconnection-detail", kwargs={"pk": connection.pk}),
+            {"user": create_test_user().pk, "identifier": identifier},
+        )
+        self.assertEqual(res.status_code, 200)
+        connection.refresh_from_db()
+        self.assertEqual(connection.user, user)
+        self.assertEqual(connection.identifier, identifier)
+
+    def test_group_connection_create(self):
+        """Create group connection"""
+        self.client.force_login(create_test_admin_user())
+        source = self._create_debug_source()
+        group = Group.objects.create(name=generate_id())
+        url = reverse("authentik_api:groupldapsourceconnection-list")
+        res = self.client.post(url, {"source": source.pk, "identifier": generate_id()})
+        self.assertEqual(res.status_code, 400)
+        self.assertIn("group", loads(res.content.decode()))
+        res = self.client.post(
+            url, {"group": group.pk, "source": source.pk, "identifier": generate_id()}
+        )
+        self.assertEqual(res.status_code, 201)
+        connection = GroupLDAPSourceConnection.objects.get(pk=loads(res.content.decode())["pk"])
+        self.assertEqual(connection.group, group)
